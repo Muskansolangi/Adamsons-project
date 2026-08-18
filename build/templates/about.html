@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">About Us</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Who We Are</span>
+    <h1 class="h1">About Adamsons Law Associates</h1>
+    <p class="lede">A full-service law firm built on accuracy of advice, client-first service, and integrity.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-media">
+        <div class="frame"></div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/about-side-480.webp 480w, assets/images/about-side-768.webp 768w, assets/images/about-side-1100.webp 1100w">
+          <img src="assets/images/about-side-768.jpg" srcset="assets/images/about-side-480.jpg 480w, assets/images/about-side-768.jpg 768w, assets/images/about-side-1100.jpg 1100w" sizes="(min-width:900px) 40vw, 90vw" alt="Rows of bound legal law reports and case volumes on office shelving" loading="lazy">
+        </picture>
+      </div>
+      <div class="split-body">
+        <span class="eyebrow">Our Firm</span>
+        <h2 class="h2">Leading Legal Practice Across Sindh</h2>
+        <p class="lede">{{ data.ABOUT_INTRO }}</p>
+        <p>{{ data.ABOUT_INTRO_2 }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What Guides Us</span>
+      <h2 class="h2">Philosophy, Vision &amp; Mission</h2>
+    </div>
+    <div class="triad">
+      {% for item in philosophy %}
+      <div class="triad-item reveal reveal-delay-{{ loop.index }}">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split reverse reveal">
+      <div class="split-media">
+        <div class="frame"></div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/team/{{ founder.photo }}-320.webp 320w, assets/images/team/{{ founder.photo }}-480.webp 480w, assets/images/team/{{ founder.photo }}-800.webp 800w">
+          <img src="assets/images/team/{{ founder.photo }}-480.jpg" srcset="assets/images/team/{{ founder.photo }}-320.jpg 320w, assets/images/team/{{ founder.photo }}-480.jpg 480w, assets/images/team/{{ founder.photo }}-800.jpg 800w" sizes="(min-width:900px) 40vw, 90vw" alt="Portrait of {{ founder.name }}" loading="lazy">
+        </picture>
+      </div>
+      <div class="split-body">
+        <span class="eyebrow">Founder &amp; Senior Partner</span>
+        <h2 class="h2">{{ founder.name }}</h2>
+        <p class="lede" style="margin-top:0.3rem;">{{ founder.role }}</p>
+        <div class="founder-facts">
+          {% for f in founder.facts %}
+          <div class="fact"><strong>{{ f.value }}</strong><span>{{ f.label }}</span></div>
+          {% endfor %}
+        </div>
+        <p>{{ founder.bio_long }}</p>
+        <ul style="margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {% for h in founder.highlights %}
+          <li style="display:flex; gap:0.7rem; color:var(--text-muted); font-size:0.94rem;"><span style="color:var(--gold-deep);">—</span>{{ h }}</li>
+          {% endfor %}
+        </ul>
+        <p style="margin-top:1rem; font-size:0.9rem;"><strong>Education:</strong> {{ founder.education }}</p>
+        <div class="section-foot">
+          <a href="pages/founder.html" class="link-arrow">View leadership &amp; recognition <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="head-row reveal">
+      <div class="section-head">
+        <span class="eyebrow">Our People</span>
+        <h2 class="h2">Our Team</h2>
+        <p>The Firm is supported by a team of dedicated advocates and associates committed to delivering diligent and responsive legal service to every client.</p>
+      </div>
+      <a href="pages/team.html" class="link-arrow">View full team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="team-grid reveal">
+      {% for m in team[:4] %}
+      <a class="team-card" href="{{ m.file }}">
+        <div class="photo">
+          {% if m.photo %}
+          <picture>
+            <source type="image/webp" srcset="assets/images/team/{{ m.photo }}-320.webp 320w, assets/images/team/{{ m.photo }}-480.webp 480w">
+            <img src="assets/images/team/{{ m.photo }}-480.jpg" srcset="assets/images/team/{{ m.photo }}-320.jpg 320w, assets/images/team/{{ m.photo }}-480.jpg 480w" sizes="25vw" alt="Portrait of {{ m.name }}" loading="lazy">
+          </picture>
+          {% else %}
+          <span class="ph-init">{{ m.name.split()[-1][0] }}</span>
+          {% endif %}
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="name">{{ m.name }}</div>
+        <div class="role">{{ m.role }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-charcoal" style="padding:3.5rem 0;">
+  <div class="container">
+    <span class="eyebrow">Recognised By</span>
+    <h3 class="h3" style="margin-bottom:1.4rem;">Professional Affiliations</h3>
+    <div class="affil-row">
+      {% for a in affiliations %}<span class="affil-badge"><span class="dot"></span>{{ a }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/quiet-power-700.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+      <a href="pages/offices.html" class="btn btn-line">Our Offices</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

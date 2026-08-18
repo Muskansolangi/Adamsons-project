@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Practice Areas</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Areas of Excellence</span>
+    <h1 class="h1">Practice Areas</h1>
+    <p class="lede">Comprehensive legal representation and advisory services across the following areas of law. Select an area to read more.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="practice-list reveal">
+      {% for pa in practice_areas %}
+      <div class="practice-row">
+        <span class="num">{{ pa.num }}</span>
+        <div class="ti">
+          <h3>{{ pa.title }}</h3>
+          <p>{{ pa.summary }}</p>
+        </div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <a class="row-link" href="{{ pa.file }}" aria-label="Read about {{ pa.title }}"></a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="split reveal">
+      <div>
+        <span class="eyebrow">Not Sure Where To Start?</span>
+        <h2 class="h2">Speak With an Advocate</h2>
+        <p style="margin-top:1.2rem;">Tell us about your matter and we'll point you to the right member of the team.</p>
+        <div class="section-foot">
+          <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/practice-bg-480.webp 480w, assets/images/practice-bg-768.webp 768w, assets/images/practice-bg-1100.webp 1100w">
+          <img src="assets/images/practice-bg-768.jpg" srcset="assets/images/practice-bg-480.jpg 480w, assets/images/practice-bg-768.jpg 768w, assets/images/practice-bg-1100.jpg 1100w" sizes="(min-width:900px) 40vw, 90vw" alt="Bound law reports on a shelf" style="aspect-ratio:1/1; object-fit:cover; width:100%;" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

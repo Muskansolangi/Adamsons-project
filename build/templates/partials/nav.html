@@ -1,0 +1,31 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header is-transparent">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/images/logo-gold.png" alt="Adamsons Law Associates monogram" width="60" height="41">
+      <span class="brand-word">ADAMSONS<br>LAW ASSOCIATES</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      {% for item in nav %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
+    </nav>
+    <div style="display:flex; align-items:center; gap:1.1rem;">
+      <a href="contact.html#consultation" class="btn btn-gold nav-cta">Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    {% for item in nav %}<li><a href="{{ item.href }}">{{ item.label }}</a></li>{% endfor %}
+  </ul>
+  <div class="mobile-cta">
+    <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+  </div>
+  <div class="mobile-meta">
+    <a href="tel:02135304455">021-35304455</a>
+    <a href="mailto:{{ firm.email }}">{{ firm.email }}</a>
+  </div>
+</nav>

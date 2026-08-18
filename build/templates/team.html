@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Our Team</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Our People</span>
+    <h1 class="h1">Our Team</h1>
+    <p class="lede">The advocates of Adamsons Law Associates, committed to delivering diligent and responsive legal service to every client.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="team-grid reveal">
+      <a class="team-card featured" href="pages/founder.html">
+        <div class="inner">
+          <div class="photo">
+            <picture>
+              <source type="image/webp" srcset="assets/images/team/{{ founder.photo }}-320.webp 320w, assets/images/team/{{ founder.photo }}-480.webp 480w, assets/images/team/{{ founder.photo }}-800.webp 800w">
+              <img src="assets/images/team/{{ founder.photo }}-480.jpg" srcset="assets/images/team/{{ founder.photo }}-320.jpg 320w, assets/images/team/{{ founder.photo }}-480.jpg 480w, assets/images/team/{{ founder.photo }}-800.jpg 800w" sizes="(min-width:640px) 30vw, 90vw" alt="Portrait of {{ founder.name }}" loading="eager">
+            </picture>
+            <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+          <div>
+            <div class="name">{{ founder.name }}</div>
+            <div class="role">{{ founder.role }}</div>
+            <p class="bio">{{ founder.bio_short }}</p>
+            <span class="link-arrow">Read full profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </a>
+      {% for m in team %}
+      <a class="team-card" href="{{ m.file }}">
+        <div class="photo">
+          {% if m.photo %}
+          <picture>
+            <source type="image/webp" srcset="assets/images/team/{{ m.photo }}-320.webp 320w, assets/images/team/{{ m.photo }}-480.webp 480w">
+            <img src="assets/images/team/{{ m.photo }}-480.jpg" srcset="assets/images/team/{{ m.photo }}-320.jpg 320w, assets/images/team/{{ m.photo }}-480.jpg 480w" sizes="25vw" alt="Portrait of {{ m.name }}" loading="lazy">
+          </picture>
+          {% else %}
+          <span class="ph-init">{{ m.name.split()[-1][0] }}</span>
+          {% endif %}
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="name">{{ m.name }}</div>
+        <div class="role">{{ m.role }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/team-banner-1100.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

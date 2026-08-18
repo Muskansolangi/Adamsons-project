@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }} | Adamsons Law Associates</title>
+<meta name="description" content="{{ description }}">
+<meta property="og:title" content="{{ title }} | Adamsons Law Associates">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/images/favicon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="{{ body_class|default('') }}">
+{% include 'partials/nav.html' %}
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+{% include 'partials/footer.html' %}
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/images/logo-gold.png" alt="Adamsons Law Associates monogram" width="46" height="31">
+          <span class="brand-word">ADAMSONS<br>LAW ASSOCIATES</span>
+        </a>
+        <p>{{ data.ABOUT_PREVIEW[:150] }}&hellip;</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/practice-areas.html">Practice Areas</a></li>
+          <li><a href="pages/team.html">Our Team</a></li>
+          <li><a href="pages/events.html">Events &amp; Achievements</a></li>
+          <li><a href="pages/journal.html">Journal</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Practice Areas</h5>
+        <ul>
+          {% for pa in practice_areas[:6] %}<li><a href="{{ pa.file }}">{{ pa.short }}</a></li>{% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Offices</h5>
+        <ul>
+          {% for o in offices %}<li><a href="pages/offices.html">{{ o.name }}</a></li>{% endfor %}
+          <li><a href="mailto:{{ firm.email }}">{{ firm.email }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {{ year }} Adamsons Law Associates. All rights reserved.</span>
+      <span>Karachi &middot; Sindh, Pakistan</span>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/{{ firm.whatsapp }}" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.65 4.55 1.78 6.43L4 29l7.73-1.75a12.9 12.9 0 0 0 4.29.73h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3zm7.06 17.15c-.3.84-1.72 1.6-2.38 1.7-.61.1-1.38.14-2.23-.14-.51-.17-1.17-.39-2.02-.76-3.55-1.53-5.87-5.1-6.05-5.34-.18-.24-1.45-1.93-1.45-3.68 0-1.75.92-2.61 1.24-2.97.32-.35.7-.44.93-.44.23 0 .47 0 .67.01.22.01.5-.08.78.6.3.7.99 2.44 1.08 2.62.09.18.15.4.03.64-.12.24-.18.4-.36.6-.18.2-.38.46-.54.62-.18.18-.37.37-.16.73.21.35.94 1.55 2.02 2.51 1.39 1.24 2.56 1.62 2.92 1.8.35.18.56.15.77-.09.21-.24.9-1.05 1.14-1.41.24-.35.47-.29.78-.18.32.12 2.03.96 2.38 1.13.35.18.58.26.67.41.09.15.09.85-.21 1.7z"/></svg>
+</a>

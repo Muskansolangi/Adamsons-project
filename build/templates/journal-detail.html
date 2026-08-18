@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="pages/journal.html">Journal</a><span>/</span><span class="current">{{ j.title }}</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">{{ j.category }}</span>
+    <h1 class="h1">{{ j.title }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <p class="lede reveal">{{ j.text }}</p>
+    {% if j.slug in ("election-commissioner-shcba", "kba-administrator", "lifetime-membership-shcba") %}
+    <div class="section-foot reveal">
+      <a href="pages/founder.html" class="link-arrow">Read the founder's full profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="head-row reveal">
+      <div class="section-head">
+        <span class="eyebrow">More</span>
+        <h2 class="h2">Other Journal Entries</h2>
+      </div>
+      <a href="pages/journal.html" class="link-arrow">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="journal-grid reveal">
+      {% for other in journal %}
+      {% if other.slug != j.slug %}
+      <article class="journal-card">
+        <span class="eyebrow">{{ other.category }}</span>
+        <h3>{{ other.title }}</h3>
+        <p>{{ other.text[:120] }}{{ '…' if other.text|length > 120 else '' }}</p>
+        <a href="{{ other.link }}" class="link-arrow">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/hero-2-1100.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="pages/team.html">Our Team</a><span>/</span><span class="current">{{ founder.name }}</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">{{ founder.role }}</span>
+    <h1 class="h1">{{ founder.name }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="profile-layout reveal">
+      <div>
+        <div class="profile-photo">
+          <picture>
+            <source type="image/webp" srcset="assets/images/team/{{ founder.photo }}-320.webp 320w, assets/images/team/{{ founder.photo }}-480.webp 480w, assets/images/team/{{ founder.photo }}-800.webp 800w">
+            <img src="assets/images/team/{{ founder.photo }}-800.jpg" srcset="assets/images/team/{{ founder.photo }}-320.jpg 320w, assets/images/team/{{ founder.photo }}-480.jpg 480w, assets/images/team/{{ founder.photo }}-800.jpg 800w" sizes="(min-width:860px) 34vw, 90vw" alt="Portrait of {{ founder.name }}" loading="eager">
+          </picture>
+        </div>
+        <div class="founder-facts">
+          {% for f in founder.facts %}
+          <div class="fact"><strong>{{ f.value }}</strong><span>{{ f.label }}</span></div>
+          {% endfor %}
+        </div>
+      </div>
+      <div>
+        <p class="lede">{{ founder.bio_long }}</p>
+        <ul style="margin-top:1.4rem; display:flex; flex-direction:column; gap:0.7rem;">
+          {% for h in founder.highlights %}
+          <li style="display:flex; gap:0.7rem; color:var(--text-muted);"><span style="color:var(--gold-deep);">—</span>{{ h }}</li>
+          {% endfor %}
+        </ul>
+        <div class="balance-line" data-animate style="margin:1.8rem 0;"></div>
+        <p style="font-size:0.94rem;"><strong>Education</strong><br>{{ founder.education }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Litigation &amp; Advisory</span>
+      <h2 class="h2">Practice Notes</h2>
+    </div>
+    <div class="scope-list reveal" style="max-width:760px;">
+      {% for n in founder.practice_notes %}<li>{{ n }}</li>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leadership &amp; Recognition</span>
+      <h2 class="h2">Professional Distinctions</h2>
+      <p>Professional distinctions and public service within Pakistan's legal fraternity.</p>
+    </div>
+    <div class="achieve-list reveal">
+      {% for r in founder.recognition %}
+      <div class="achieve-row">
+        <span class="period">{{ r.period }}</span>
+        <div>
+          <h3>{{ r.title }}</h3>
+          <p>{{ r.text }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-charcoal">
+  <div class="container">
+    <div class="split reveal">
+      <div>
+        <span class="eyebrow">Public Service</span>
+        <h2 class="h2">Civic Engagement</h2>
+        <p style="margin-top:1.2rem; color:var(--on-dark-muted);">{{ founder.civic }}</p>
+      </div>
+      <div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/leadership-bg-480.webp 480w, assets/images/leadership-bg-768.webp 768w, assets/images/leadership-bg-1100.webp 1100w">
+          <img src="assets/images/leadership-bg-768.jpg" srcset="assets/images/leadership-bg-480.jpg 480w, assets/images/leadership-bg-768.jpg 768w, assets/images/leadership-bg-1100.jpg 1100w" sizes="(min-width:900px) 40vw, 90vw" alt="Advocates walking through a courthouse corridor" style="aspect-ratio:4/5; object-fit:cover; width:100%;" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/hero-3-1100.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+      <a href="pages/team.html" class="btn btn-line">Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

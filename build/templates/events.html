@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Events &amp; Achievements</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Our Journey</span>
+    <h1 class="h1">Events &amp; Achievements</h1>
+    <p class="lede">Milestones from the Firm's professional activities, Bar leadership, and public recognition.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Recognition</span>
+      <h2 class="h2">Achievements</h2>
+    </div>
+    <div class="achieve-list reveal">
+      {% for e in events_achievements %}
+      <div class="achieve-row">
+        <span class="period">{{ e.period }}</span>
+        <div>
+          <h3>{{ e.title }}</h3>
+          <p>{{ e.text }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Photo Gallery</span>
+      <h2 class="h2">Conferences, Seminars &amp; Bar Events</h2>
+    </div>
+    <div class="masonry" id="event-gallery" data-count="{{ gallery|length }}">
+      {% for g in gallery %}
+      <button type="button" class="masonry-item" data-index="{{ loop.index0 }}" data-w="{{ g.w }}" data-h="{{ g.h }}" aria-label="Open image {{ loop.index }} of {{ gallery|length }}">
+        <picture>
+          <source type="image/webp" srcset="assets/images/events/{{ g.slug }}-thumb.webp">
+          <img src="assets/images/events/{{ g.slug }}-thumb.jpg" alt="{{ g.alt }}" loading="lazy" width="{{ g.w }}" height="{{ g.h }}">
+        </picture>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="lb-close" aria-label="Close image viewer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button type="button" class="lb-arrow lb-prev" aria-label="Previous image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="lb-stage">
+    <picture>
+      <source id="lb-source" type="image/webp" srcset="">
+      <img id="lb-img" src="" alt="">
+    </picture>
+  </div>
+  <button type="button" class="lb-arrow lb-next" aria-label="Next image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
+
+<script>
+  window.__GALLERY__ = [
+    {% for g in gallery %}{ full: "assets/images/events/{{ g.slug }}-full.jpg", fullWebp: "assets/images/events/{{ g.slug }}-full.webp", alt: "{{ g.alt }}" }{{ "," if not loop.last }}
+    {% endfor %}
+  ];
+</script>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/hero-3-1100.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+      <a href="pages/founder.html" class="btn btn-line">Founder's Profile</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

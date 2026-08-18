@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Journal</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Legal Insights</span>
+    <h1 class="h1">Journal</h1>
+    <p class="lede">Professional recognition and legal updates from Adamsons Law Associates.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="journal-grid reveal">
+      {% for j in journal %}
+      <article class="journal-card">
+        <span class="eyebrow">{{ j.category }}</span>
+        <h3>{{ j.title }}</h3>
+        <p>{{ j.text }}</p>
+        {% if j.link %}<a href="{{ j.link }}" class="link-arrow">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/hero-2-1100.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

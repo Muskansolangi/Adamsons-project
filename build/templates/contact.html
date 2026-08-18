@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Contact</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Get In Touch</span>
+    <h1 class="h1">Contact Us</h1>
+    <p class="lede">Reach out for a consultation, or contact any of our three offices directly.</p>
+  </div>
+</section>
+
+<section class="section" id="consultation">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-side reveal">
+        <span class="eyebrow">Our Offices</span>
+        <h2 class="h2" style="margin-bottom:1.8rem;">Reach Us Directly</h2>
+        {% for o in offices %}
+        <div class="office-card">
+          <div class="rule"></div>
+          <h3>{{ o.name }}</h3>
+          <address>{{ o.lines | join('<br>') | safe }}</address>
+          {% if o.phone %}<a class="phone" href="tel:{{ o.phone_href }}">{{ o.phone }}</a>{% endif %}
+          <a class="map-link" href="{{ o.map }}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
+          </a>
+        </div>
+        {% endfor %}
+        <a href="https://wa.me/{{ firm.whatsapp }}" target="_blank" rel="noopener" class="whatsapp-line">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.65 4.55 1.78 6.43L4 29l7.73-1.75a12.9 12.9 0 0 0 4.29.73h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3z"/></svg>
+          Message us on WhatsApp
+        </a>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">Consultation Request</span>
+        <h2 class="h2" style="margin-bottom:1.8rem;">Discuss Your Legal Matter With Us</h2>
+
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+
+        <form id="consultation-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Full Name</label>
+              <input type="text" id="f-name" name="name" data-required autocomplete="name">
+              <span class="err">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="f-email">Email Address</label>
+              <input type="email" id="f-email" name="email" data-required autocomplete="email">
+              <span class="err">Please enter a valid email address.</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-phone">Phone Number</label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="f-subject">Subject</label>
+              <input type="text" id="f-subject" name="subject" placeholder="e.g. Corporate advisory">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message" data-required placeholder="Briefly describe your legal matter"></textarea>
+            <span class="err">Please describe your matter.</span>
+          </div>
+          <button type="submit" class="btn btn-gold">Send Message <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="form-note">Submitting this form opens your email app with your message ready to send to {{ firm.email }}. For an immediate response, please call or WhatsApp us directly.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

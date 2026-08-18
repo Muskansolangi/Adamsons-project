@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="pages/practice-areas.html">Practice Areas</a><span>/</span><span class="current">{{ pa.title }}</span></nav>
+    <span class="pd-num" style="margin-top:1.2rem;">Practice Area {{ pa.num }}</span>
+    <h1 class="h1">{{ pa.title }}</h1>
+    <p class="lede">{{ pa.summary }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="pd-hero reveal">
+      <div>
+        <span class="eyebrow">What This Covers</span>
+        <h2 class="h2">Scope of Services</h2>
+        <ul class="scope-list">
+          {% for s in pa.services %}<li>{{ s }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div class="pd-media">
+        <picture>
+          <source type="image/webp" srcset="assets/images/{{ pa.image }}-480.webp 480w, assets/images/{{ pa.image }}-768.webp 768w, assets/images/{{ pa.image }}-1100.webp 1100w">
+          <img src="assets/images/{{ pa.image }}-768.jpg" srcset="assets/images/{{ pa.image }}-480.jpg 480w, assets/images/{{ pa.image }}-768.jpg 768w, assets/images/{{ pa.image }}-1100.jpg 1100w" sizes="(min-width:900px) 45vw, 90vw" alt="{{ pa.title }}" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Explore Further</span>
+      <h2 class="h2">Other Practice Areas</h2>
+    </div>
+    <div class="other-areas reveal">
+      {% for other in other_areas %}
+      <a href="{{ other.file }}">{{ other.title }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig"><img src="assets/images/hero-2-1100.jpg" alt="" loading="lazy"></div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+      <a href="pages/practice-areas.html" class="btn btn-line">All Practice Areas</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero hero-full">
+  <div class="hero-bg hero-carousel" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label="Firm photography">
+    <div class="hc-track">
+      <div class="hc-slide is-active">
+        <picture>
+          <source type="image/webp" srcset="assets/images/hero-3-480.webp 480w, assets/images/hero-3-768.webp 768w, assets/images/hero-3-1100.webp 1100w, assets/images/hero-3-1600.webp 1600w" sizes="100vw">
+          <img src="assets/images/hero-3-1600.jpg" srcset="assets/images/hero-3-480.jpg 480w, assets/images/hero-3-768.jpg 768w, assets/images/hero-3-1100.jpg 1100w, assets/images/hero-3-1600.jpg 1600w" sizes="100vw" alt="Scales of justice resting on a legal document, lit by a shaft of light" style="object-position:center 22%;" width="1200" height="1800" loading="eager" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="hc-slide">
+        <picture>
+          <source type="image/webp" srcset="assets/images/hero-bor-480.webp 480w, assets/images/hero-bor-768.webp 768w, assets/images/hero-bor-1100.webp 1100w, assets/images/hero-bor-1600.webp 1600w" sizes="100vw">
+          <img src="assets/images/hero-bor-1600.jpg" srcset="assets/images/hero-bor-480.jpg 480w, assets/images/hero-bor-768.jpg 768w, assets/images/hero-bor-1100.jpg 1100w, assets/images/hero-bor-1600.jpg 1600w" sizes="100vw" alt="Close-up of an antique copy of the Bill of Rights document" style="object-position:center 30%;" loading="lazy">
+        </picture>
+      </div>
+      <div class="hc-slide">
+        <picture>
+          <source type="image/webp" srcset="assets/images/lady-justice-480.webp 480w, assets/images/lady-justice-768.webp 768w, assets/images/lady-justice-1100.webp 1100w, assets/images/lady-justice-1600.webp 1600w" sizes="100vw">
+          <img src="assets/images/lady-justice-1600.jpg" srcset="assets/images/lady-justice-480.jpg 480w, assets/images/lady-justice-768.jpg 768w, assets/images/lady-justice-1100.jpg 1100w, assets/images/lady-justice-1600.jpg 1600w" sizes="100vw" alt="Bronze statue of Lady Justice holding scales and a sword, beside law books" style="object-position:center 18%;" loading="lazy">
+        </picture>
+      </div>
+      <div class="hc-slide">
+        <picture>
+          <source type="image/webp" srcset="assets/images/hero-4-480.webp 480w, assets/images/hero-4-768.webp 768w, assets/images/hero-4-1100.webp 1100w, assets/images/hero-4-1600.webp 1600w" sizes="100vw">
+          <img src="assets/images/hero-4-1600.jpg" srcset="assets/images/hero-4-480.jpg 480w, assets/images/hero-4-768.jpg 768w, assets/images/hero-4-1100.jpg 1100w, assets/images/hero-4-1600.jpg 1600w" sizes="100vw" alt="A gavel beside golden scales of justice on a legal book" style="object-position:center 48%;" loading="lazy">
+        </picture>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-controls">
+    <button type="button" class="hc-arrow hc-prev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="hc-dots" role="tablist" aria-label="Choose image">
+      <button type="button" class="hc-dot is-active" role="tab" aria-selected="true" aria-label="Image 1"></button>
+      <button type="button" class="hc-dot" role="tab" aria-selected="false" aria-label="Image 2"></button>
+      <button type="button" class="hc-dot" role="tab" aria-selected="false" aria-label="Image 3"></button>
+      <button type="button" class="hc-dot" role="tab" aria-selected="false" aria-label="Image 4"></button>
+    </div>
+    <button type="button" class="hc-arrow hc-next" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <div class="hero-copy-wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">{{ firm.tagline_eyebrow }}</span>
+      <h1>{{ firm.hero_headline }}</h1>
+      <p class="lede">{{ firm.hero_sub }}</p>
+      <div class="hero-ctas">
+        <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="pages/practice-areas.html" class="btn btn-line">Explore Practice Areas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      {% for s in stats %}
+      <div class="stat">
+        <strong data-counter="{{ s.value }}">0</strong>
+        <span>{{ s.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-media">
+        <div class="frame"></div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/about-side-480.webp 480w, assets/images/about-side-768.webp 768w, assets/images/about-side-1100.webp 1100w">
+          <img src="assets/images/about-side-768.jpg" srcset="assets/images/about-side-480.jpg 480w, assets/images/about-side-768.jpg 768w, assets/images/about-side-1100.jpg 1100w" sizes="(min-width:900px) 40vw, 90vw" alt="Rows of bound legal law reports and case volumes on office shelving" loading="lazy">
+        </picture>
+      </div>
+      <div class="split-body">
+        <span class="eyebrow">About the Firm</span>
+        <h2 class="h2">Leading Legal Practice Across Sindh</h2>
+        <p class="lede">{{ data.ABOUT_PREVIEW }}</p>
+        <div class="section-foot">
+          <a href="pages/about.html" class="link-arrow">Learn more about our firm <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What Guides Us</span>
+      <h2 class="h2">Philosophy, Vision &amp; Mission</h2>
+    </div>
+    <div class="triad">
+      {% for item in philosophy %}
+      <div class="triad-item reveal reveal-delay-{{ loop.index }}">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="head-row reveal">
+      <div class="section-head">
+        <span class="eyebrow">Areas of Excellence</span>
+        <h2 class="h2">Practice Areas</h2>
+        <p>Comprehensive legal representation and advisory services across the following areas.</p>
+      </div>
+      <a href="pages/practice-areas.html" class="link-arrow">View all practice areas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="practice-list reveal">
+      {% for pa in practice_areas %}
+      <div class="practice-row">
+        <span class="num">{{ pa.num }}</span>
+        <div class="ti">
+          <h3>{{ pa.title }}</h3>
+          <p>{{ pa.summary }}</p>
+        </div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <a class="row-link" href="{{ pa.file }}" aria-label="Read about {{ pa.title }}"></a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Journey</span>
+      <h2 class="h2">Milestones</h2>
+    </div>
+    <div class="timeline reveal">
+      {% for m in milestones %}
+      <div class="tl-item">
+        <div class="dot-line"><span class="dot"></span><span class="ln"></span></div>
+        <span class="yr">{{ m.year }}</span>
+        <h4>{{ m.title }}</h4>
+        <p>{{ m.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-media">
+        <div class="frame"></div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/team/{{ founder.photo }}-320.webp 320w, assets/images/team/{{ founder.photo }}-480.webp 480w, assets/images/team/{{ founder.photo }}-800.webp 800w">
+          <img src="assets/images/team/{{ founder.photo }}-480.jpg" srcset="assets/images/team/{{ founder.photo }}-320.jpg 320w, assets/images/team/{{ founder.photo }}-480.jpg 480w, assets/images/team/{{ founder.photo }}-800.jpg 800w" sizes="(min-width:900px) 40vw, 90vw" alt="Portrait of {{ founder.name }}" loading="lazy">
+        </picture>
+      </div>
+      <div class="split-body">
+        <span class="eyebrow">Founder &amp; Senior Partner</span>
+        <h2 class="h2">{{ founder.name }}</h2>
+        <p class="lede" style="margin-top:0.3rem;">{{ founder.role }}</p>
+        <p style="margin-top:1.2rem;">{{ founder.bio_short }}</p>
+        <div class="section-foot">
+          <a href="pages/founder.html" class="link-arrow">Read full profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="head-row reveal">
+      <div class="section-head">
+        <span class="eyebrow">Our People</span>
+        <h2 class="h2">Our Team</h2>
+        <p>The Firm is supported by a team of dedicated advocates and associates committed to delivering diligent and responsive legal service to every client.</p>
+      </div>
+      <a href="pages/team.html" class="link-arrow">View full team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="team-grid reveal">
+      {% for m in team[:4] %}
+      <a class="team-card" href="{{ m.file }}">
+        <div class="photo">
+          {% if m.photo %}
+          <picture>
+            <source type="image/webp" srcset="assets/images/team/{{ m.photo }}-320.webp 320w, assets/images/team/{{ m.photo }}-480.webp 480w">
+            <img src="assets/images/team/{{ m.photo }}-480.jpg" srcset="assets/images/team/{{ m.photo }}-320.jpg 320w, assets/images/team/{{ m.photo }}-480.jpg 480w" sizes="25vw" alt="Portrait of {{ m.name }}" loading="lazy">
+          </picture>
+          {% else %}
+          <span class="ph-init">{{ m.name.split()[-1][0] }}</span>
+          {% endif %}
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+        <div class="name">{{ m.name }}</div>
+        <div class="role">{{ m.role }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-charcoal" style="padding:3.5rem 0;">
+  <div class="container">
+    <span class="eyebrow">Recognised By</span>
+    <h3 class="h3" style="margin-bottom:1.4rem;">Professional Affiliations</h3>
+    <div class="affil-row">
+      {% for a in affiliations %}<span class="affil-badge"><span class="dot"></span>{{ a }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="on-dark" style="padding:4.5rem 0;">
+  <div class="container">
+    <span class="eyebrow">Trusted By</span>
+    <h2 class="h2" style="margin-bottom:2rem;">Selected Clients</h2>
+  </div>
+  <div class="container" style="max-width:1240px;">
+    <div class="clients-row reveal">
+      {% for c in clients %}<div class="client-cell"><span>{{ c }}</span></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="head-row reveal">
+      <div class="section-head">
+        <span class="eyebrow">Latest</span>
+        <h2 class="h2">Insights</h2>
+      </div>
+      <a href="pages/journal.html" class="link-arrow">View journal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="journal-grid reveal">
+      {% for j in journal[:3] %}
+      <article class="journal-card">
+        <span class="eyebrow">{{ j.category }}</span>
+        <h3>{{ j.title }}</h3>
+        <p>{{ j.text[:130] }}{{ '…' if j.text|length > 130 else '' }}</p>
+        <a href="{{ j.link or 'journal.html' }}" class="link-arrow">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Where To Find Us</span>
+      <h2 class="h2">Our Offices</h2>
+    </div>
+    <div class="offices-grid reveal">
+      {% for o in offices %}
+      <div class="office-card">
+        <div class="rule"></div>
+        <h3>{{ o.name }}</h3>
+        <address>{{ o.lines | join('<br>') | safe }}</address>
+        {% if o.phone %}<a class="phone" href="tel:{{ o.phone_href }}">{{ o.phone }}</a>{% endif %}
+        <a class="map-link" href="{{ o.map }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          View on map
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg-fig">
+    <img src="assets/images/hero-2-1100.jpg" alt="" loading="lazy">
+  </div>
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="h1">Discuss Your Legal Matter With Us</h2>
+    <p>Schedule a consultation with our advocates to talk through your case in confidence.</p>
+    <div class="cta-band-ctas">
+      <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+      <a href="tel:02135304455" class="btn btn-line">Call the Firm</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

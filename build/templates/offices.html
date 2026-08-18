@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-header no-dark-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Our Offices</span></nav>
+    <span class="eyebrow" style="margin-top:1.2rem;">Where To Find Us</span>
+    <h1 class="h1">Our Offices</h1>
+    <p class="lede">Adamsons Law Associates maintains three offices across Sindh.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="offices-grid reveal">
+      {% for o in offices %}
+      <div class="office-card">
+        <div class="rule"></div>
+        <h3>{{ o.name }}</h3>
+        <address>{{ o.lines | join('<br>') | safe }}</address>
+        {% if o.phone %}<a class="phone" href="tel:{{ o.phone_href }}">{{ o.phone }}</a>{% endif %}
+        <a class="map-link" href="{{ o.map }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section on-paper-dim">
+  <div class="container">
+    <div class="split reveal">
+      <div>
+        <span class="eyebrow">General Inquiries</span>
+        <h2 class="h2">Get In Touch</h2>
+        <p style="margin-top:1.2rem;">For general inquiries, email us directly or reach out on WhatsApp for a prompt response.</p>
+        <div style="margin-top:1.3rem; display:flex; flex-direction:column; gap:0.8rem;">
+          <a href="mailto:{{ firm.email }}" class="link-arrow">{{ firm.email }}</a>
+          <a href="https://wa.me/{{ firm.whatsapp }}" target="_blank" rel="noopener" class="whatsapp-line">
+            <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.65 4.55 1.78 6.43L4 29l7.73-1.75a12.9 12.9 0 0 0 4.29.73h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3z"/></svg>
+            Message us on WhatsApp
+          </a>
+        </div>
+        <div class="section-foot">
+          <a href="contact.html#consultation" class="btn btn-gold">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div>
+        <picture>
+          <source type="image/webp" srcset="assets/images/court-480.webp 480w, assets/images/court-768.webp 768w, assets/images/court-1100.webp 1100w">
+          <img src="assets/images/court-768.jpg" srcset="assets/images/court-480.jpg 480w, assets/images/court-768.jpg 768w, assets/images/court-1100.jpg 1100w" sizes="(min-width:900px) 40vw, 90vw" alt="Sindh High Court building, Karachi" style="aspect-ratio:4/5; object-fit:cover; width:100%;" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
