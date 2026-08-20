@@ -328,6 +328,57 @@ if (pageLoader) {
   }
 
   /* ---------------------------------------------------------------
+     Scroll progress bar + back-to-top
+     --------------------------------------------------------------- */
+  var progressBar = document.getElementById("scroll-progress");
+  var backToTop   = document.getElementById("back-to-top");
+
+  function updateScrollUI() {
+    var scrollTop  = window.scrollY || window.pageYOffset;
+    var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    var pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (progressBar) progressBar.style.width = pct + "%";
+
+    if (backToTop) {
+      if (scrollTop > 400) {
+        backToTop.classList.add("is-visible");
+      } else {
+        backToTop.classList.remove("is-visible");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+
+  if (backToTop) {
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     Textarea character counter
+     --------------------------------------------------------------- */
+  var msgField   = document.getElementById("f-message");
+  var charCount  = document.getElementById("char-count");
+  var MAX_CHARS  = 1000;
+
+  if (msgField && charCount) {
+    msgField.setAttribute("maxlength", MAX_CHARS);
+    function updateCharCount() {
+      var remaining = MAX_CHARS - msgField.value.length;
+      charCount.textContent = remaining + " / " + MAX_CHARS;
+      charCount.className = "char-count";
+      if (remaining < 100) charCount.classList.add("is-near");
+      if (remaining < 0)   charCount.classList.add("is-over");
+    }
+    msgField.addEventListener("input", updateCharCount);
+    updateCharCount();
+  }
+
+  /* ---------------------------------------------------------------
      Active nav link
      --------------------------------------------------------------- */
   var here = (location.pathname.split("/").pop() || "index.html");
@@ -357,6 +408,28 @@ var form = document.getElementById("consultation-form");
 
 if (form) {
   var statusBox = document.getElementById("form-status");
+  var submitBtn = document.getElementById("form-submit");
+  var btnLabel  = submitBtn ? submitBtn.querySelector(".btn-label") : null;
+
+  function setSubmitting(on) {
+    if (!submitBtn) return;
+    if (on) {
+      submitBtn.classList.add("btn-loading");
+      submitBtn.setAttribute("aria-disabled", "true");
+      if (btnLabel) btnLabel.textContent = "Sending…";
+    } else {
+      submitBtn.classList.remove("btn-loading");
+      submitBtn.removeAttribute("aria-disabled");
+      if (btnLabel) btnLabel.textContent = "Send Message";
+    }
+  }
+
+  function showStatus(message, type) {
+    if (!statusBox) return;
+    statusBox.textContent = message;
+    statusBox.className = "form-status is-visible " + (type === "success" ? "is-success" : "is-error");
+    statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -374,60 +447,43 @@ if (form) {
       }
 
       wrap.classList.toggle("has-error", !ok);
-
-      if (!ok) {
-        valid = false;
-      }
+      if (!ok) valid = false;
     });
 
     if (!valid) {
-      if (statusBox) {
-        statusBox.textContent =
-          "Please check the highlighted fields and try again.";
-
-        statusBox.classList.add("is-visible");
-      }
-
+      showStatus("Please check the highlighted fields and try again.", "error");
       return;
     }
+
+    setSubmitting(true);
+    if (statusBox) statusBox.className = "form-status";
 
     var formData = new FormData(form);
 
     fetch("https://formsubmit.co/ajax/ajmal1479@gmail.com", {
       method: "POST",
       body: formData,
-      headers: {
-        Accept: "application/json"
-      }
+      headers: { Accept: "application/json" }
     })
       .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Submission failed");
-        }
-
+        if (!response.ok) throw new Error("Submission failed");
         return response.json();
       })
       .then(function () {
-        if (statusBox) {
-          var name = formData.get("name") || "there";
-
-          statusBox.textContent =
-            "Thank you, " +
-            name.split(" ")[0] +
-            ". Your message has been sent successfully. We will get back to you soon.";
-
-          statusBox.classList.add("is-visible");
-        }
-
+        var name = formData.get("name") || "there";
+        showStatus(
+          "Thank you, " + name.split(" ")[0] + ". Your message has been sent. We will get back to you shortly.",
+          "success"
+        );
         form.reset();
+        setSubmitting(false);
       })
       .catch(function () {
-        if (statusBox) {
-          statusBox.textContent =
-            "Something went wrong. Please try again or email ajmal1479@gmail.com directly.";
-
-          statusBox.classList.add("is-visible");
-        }
+        showStatus(
+          "Something went wrong. Please try again or email ajmal1479@gmail.com directly.",
+          "error"
+        );
+        setSubmitting(false);
       });
   });
 

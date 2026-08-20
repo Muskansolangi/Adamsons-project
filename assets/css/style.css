@@ -9,7 +9,7 @@
               the firm's own scales-of-justice mark, never literal.
    ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;0,9..144,600;1,9..144,440;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+/* Google Fonts loaded via <link> in HTML for faster render */
 
 :root{
   /* colour */
@@ -116,6 +116,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .on-dark .link-arrow, .hero .link-arrow, .cta-band .link-arrow, .on-charcoal .link-arrow{ color:var(--gold-soft); }
 .link-arrow svg{ width:15px; height:15px; transition:transform .25s ease; }
+.link-arrow:hover{ border-bottom-color:currentColor; }
 .link-arrow:hover svg{ transform:translateX(4px); }
 
 /* ---------------------------------------------------------------------
@@ -155,7 +156,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color:var(--on-dark); transition:color .3s ease;
   line-height:1.15;
 }
-@media (min-width:1180px){ .brand-word{ font: size 18px;; letter-spacing:0.03em; } }
+@media (min-width:1180px){ .brand-word{ font-size:18px; letter-spacing:0.03em; } }
 .site-header.is-transparent .brand-word{ color:var(--on-dark); }
 .site-header.is-solid .brand-word,
 .site-header.is-open .brand-word{ color:var(--ink); }
@@ -669,8 +670,10 @@ section{ position:relative; }
    --------------------------------------------------------------------- */
 .triad{ display:grid; grid-template-columns:1fr; gap:2.2rem; }
 @media (min-width:768px){ .triad{ grid-template-columns:repeat(3,1fr); gap:2.5rem; } }
-.triad-item{ padding-top:1.4rem; border-top:1px solid var(--paper-line); }
+.triad-item{ padding-top:1.4rem; border-top:1px solid var(--paper-line); transition:border-top-color .25s ease; }
+.triad-item:hover{ border-top-color:var(--gold); }
 .on-dark .triad-item{ border-top-color:var(--dark-line); }
+.on-dark .triad-item:hover{ border-top-color:var(--gold-soft); }
 .triad-item h3{ font-size:1.25rem; margin-bottom:0.7rem; }
 .triad-item p{ color:var(--text-muted); font-size:0.98rem; }
 
@@ -690,8 +693,9 @@ section{ position:relative; }
 }
 .on-dark .practice-row .num{ color:var(--gold-soft); }
 .practice-row .ti h3{ font-size:clamp(1.2rem,1.05rem + .5vw,1.55rem); font-weight:540; transition:transform .35s ease; }
-.practice-row .ti p{ margin-top:0.4rem; color:var(--text-muted); font-size:0.92rem; max-width:52ch; display:none; }
-@media (min-width:640px){ .practice-row .ti p{ display:block; } }
+/* show description on all screen sizes, limit to 2 lines on small screens */
+.practice-row .ti p{ margin-top:0.4rem; color:var(--text-muted); font-size:0.92rem; max-width:52ch; }
+@media (max-width:639px){ .practice-row .ti p{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; font-size:0.88rem; } }
 .practice-row .go{ width:38px; height:38px; border:1px solid var(--paper-line); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:border-color .3s ease, background .3s ease, transform .35s ease; }
 .on-dark .practice-row .go{ border-color:var(--dark-line); }
 .practice-row .go svg{ width:15px; height:15px; transition:transform .3s ease; }
@@ -1189,8 +1193,11 @@ section{ position:relative; }
 .affil-badge{
   display:inline-flex; align-items:center; gap:0.6rem; padding:0.8rem 1.2rem;
   border:1px solid var(--paper-line); font-size:0.88rem; font-weight:500; color:var(--text);
+  transition:border-color .25s ease, color .25s ease;
 }
+.affil-badge:hover{ border-color:var(--gold); color:var(--gold-deep); }
 .on-dark .affil-badge, .on-charcoal .affil-badge{ border-color:var(--dark-line); color:var(--on-dark); }
+.on-dark .affil-badge:hover, .on-charcoal .affil-badge:hover{ border-color:var(--gold-soft); color:var(--gold-soft); }
 .affil-badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); }
 
 /* ---------------------------------------------------------------------
@@ -1199,9 +1206,11 @@ section{ position:relative; }
 .journal-grid{ display:grid; grid-template-columns:1fr; gap:2.2rem; }
 @media (min-width:640px){ .journal-grid{ grid-template-columns:repeat(2,1fr); gap:2.6rem 2rem; } }
 @media (min-width:1024px){ .journal-grid{ grid-template-columns:repeat(3,1fr); } }
-.journal-card{ padding-top:1.3rem; border-top:1px solid var(--paper-line); }
+.journal-card{ padding-top:1.3rem; border-top:1px solid var(--paper-line); transition:border-top-color .25s ease; }
+.journal-card:hover{ border-top-color:var(--gold); }
 .journal-card .eyebrow{ margin-bottom:0.7rem; }
-.journal-card h3{ font-size:1.18rem; font-weight:540; margin-bottom:0.6rem; }
+.journal-card h3{ font-size:1.18rem; font-weight:540; margin-bottom:0.6rem; transition:color .25s ease; }
+.journal-card:hover h3{ color:var(--gold-deep); }
 .journal-card p{ color:var(--text-muted); font-size:0.94rem; margin-bottom:1.1rem; }
 
 /* ---------------------------------------------------------------------
@@ -1279,8 +1288,10 @@ section{ position:relative; }
    --------------------------------------------------------------------- */
 .offices-grid{ display:grid; grid-template-columns:1fr; gap:1.6rem; }
 @media (min-width:768px){ .offices-grid{ grid-template-columns:repeat(3,1fr); gap:1.8rem; } }
-.office-card{ padding:2rem 1.7rem; background:var(--paper); border:1px solid var(--paper-line); }
+.office-card{ padding:2rem 1.7rem; background:var(--paper); border:1px solid var(--paper-line); transition:border-color .25s ease, box-shadow .25s ease; }
+.office-card:hover{ border-color:var(--gold); box-shadow:0 4px 20px rgba(169,131,46,0.10); }
 .on-dark .office-card, .on-charcoal .office-card{ background:transparent; border-color:var(--dark-line); }
+.on-dark .office-card:hover, .on-charcoal .office-card:hover{ border-color:var(--gold-soft); box-shadow:none; }
 .office-card .rule{ width:26px; height:2px; background:var(--gold); margin-bottom:1.3rem; }
 .office-card h3{ font-size:1.15rem; margin-bottom:0.9rem; }
 .office-card address{ font-style:normal; color:var(--text-muted); font-size:0.94rem; margin-bottom:1rem; }
@@ -1309,11 +1320,18 @@ section{ position:relative; }
 @media (min-width:960px){ .contact-layout{ grid-template-columns:0.9fr 1.1fr; gap:5vw; } }
 .field{ margin-bottom:1.4rem; }
 .field label{ display:block; font-size:0.82rem; font-weight:600; letter-spacing:0.02em; margin-bottom:0.5rem; color:var(--text); }
-.field input, .field textarea{
+.field input, .field textarea, .field select{
   width:100%; padding:0.85rem 1rem; border:1px solid var(--paper-line); background:var(--white);
   color:var(--text); border-radius:var(--radius); transition:border-color .25s ease, box-shadow .25s ease;
 }
-.field input:focus, .field textarea:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(169,131,46,0.15); }
+.field select{
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6357' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 0.9rem center; background-size:16px;
+  padding-right:2.5rem; cursor:pointer;
+}
+.field select option{ color:var(--text); background:var(--white); }
+.field input:focus, .field textarea:focus, .field select:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(169,131,46,0.15); }
 .field textarea{ min-height:140px; resize:vertical; }
 .field .err{ display:none; color:#9B4A3B; font-size:0.8rem; margin-top:0.4rem; }
 .field.has-error input, .field.has-error textarea{ border-color:#9B4A3B; }
@@ -1321,9 +1339,24 @@ section{ position:relative; }
 .form-row{ display:grid; grid-template-columns:1fr; gap:0 1.2rem; }
 @media (min-width:560px){ .form-row{ grid-template-columns:1fr 1fr; } }
 .form-row .field{ min-width:0; }
-.form-status{ display:none; padding:1.1rem 1.3rem; border:1px solid var(--gold); background:var(--paper-dim); font-size:0.92rem; margin-bottom:1.4rem; }
+.form-status{ display:none; padding:1.1rem 1.3rem; border:1px solid var(--gold); background:var(--paper-dim); font-size:0.92rem; margin-bottom:1.4rem; border-left-width:4px; }
 .form-status.is-visible{ display:block; }
+.form-status.is-success{ border-color:#3A7D44; border-left-color:#3A7D44; background:#F0FAF2; color:#2A5C32; }
+.form-status.is-error{ border-color:#9B4A3B; border-left-color:#9B4A3B; background:#FDF2F0; color:#7A3020; }
 .form-note{ font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+
+/* Submit button loading state */
+.btn-loading{
+  pointer-events:none; opacity:0.75; cursor:not-allowed;
+}
+.btn-spinner{
+  display:none; width:15px; height:15px; border:2px solid rgba(21,19,15,0.25);
+  border-top-color:var(--ink); border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+.btn-loading .btn-spinner{ display:block; }
+.btn-loading .btn-label{ opacity:0.7; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
 
 .contact-side .office-card{ margin-bottom:1.2rem; }
 .whatsapp-line{ display:inline-flex; align-items:center; gap:0.6rem; font-weight:600; color:var(--gold-deep); margin-top:0.5rem; }
@@ -1370,7 +1403,7 @@ section{ position:relative; }
 .footer-brand p{ font-size:0.9rem; max-width:32ch; }
 .footer-col h5{ font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-dark); margin-bottom:1.1rem; font-weight:600; }
 .footer-col ul{ display:flex; flex-direction:column; gap:0.7rem; }
-.footer-col a{ font-size:0.9rem; }
+.footer-col a{ font-size:0.9rem; color:var(--on-dark-muted); transition:color .2s ease; }
 .footer-col a:hover{ color:var(--gold-soft); }
 .footer-bottom{
   border-top:1px solid var(--dark-line); padding:1.6rem 0; display:flex; flex-wrap:wrap;
@@ -1438,3 +1471,128 @@ section{ position:relative; }
     transform:scale(1);
   }
 }
+
+/* =====================================================================
+   UI/UX UPGRADE — batch 2
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   Scroll progress bar — thin gold line fixed at very top
+   --------------------------------------------------------------------- */
+#scroll-progress{
+  position:fixed; top:0; left:0; z-index:9999;
+  height:3px; width:0%; max-width:100%;
+  background:linear-gradient(90deg, var(--gold-deep), var(--gold-soft));
+  transition:width .1s linear;
+  pointer-events:none;
+}
+
+/* ---------------------------------------------------------------------
+   Back-to-top button
+   --------------------------------------------------------------------- */
+#back-to-top{
+  position:fixed; right:1.1rem; bottom:4.8rem; z-index:89;
+  width:44px; height:44px; border-radius:50%;
+  background:var(--charcoal); border:1px solid var(--dark-line);
+  color:var(--on-dark); display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transform:translateY(12px);
+  transition:opacity .3s ease, transform .3s ease, background .25s ease, border-color .25s ease;
+  box-shadow:0 4px 16px rgba(0,0,0,0.28);
+}
+#back-to-top.is-visible{
+  opacity:1; pointer-events:auto; transform:translateY(0);
+}
+#back-to-top:hover{
+  background:var(--gold); border-color:var(--gold); color:var(--ink);
+}
+#back-to-top svg{ width:18px; height:18px; }
+
+/* push WhatsApp FAB up slightly when back-to-top is visible */
+.whatsapp-fab{ transition:transform .25s ease, bottom .3s ease; }
+
+/* ---------------------------------------------------------------------
+   Hero — scroll-down chevron
+   --------------------------------------------------------------------- */
+.hero-scroll-hint{
+  position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:0.3rem;
+  color:rgba(243,239,228,0.55); font-size:0.68rem; letter-spacing:0.14em;
+  text-transform:uppercase; pointer-events:none;
+  animation:hint-bob 2.4s ease-in-out infinite;
+}
+.hero-scroll-hint svg{ width:20px; height:20px; }
+@keyframes hint-bob{
+  0%,100%{ transform:translateX(-50%) translateY(0); opacity:0.55; }
+  50%{ transform:translateX(-50%) translateY(6px); opacity:0.9; }
+}
+@media (prefers-reduced-motion:reduce){ .hero-scroll-hint{ animation:none; } }
+@media (max-width:639px){ .hero-scroll-hint{ display:none; } }
+
+/* ---------------------------------------------------------------------
+   Active nav link — gold underline indicator
+   --------------------------------------------------------------------- */
+@media (min-width:1024px){
+  .nav-desktop a.is-active{
+    color:var(--gold-deep);
+  }
+  .site-header.is-transparent .nav-desktop a.is-active{
+    color:var(--gold-soft);
+  }
+  .nav-desktop a.is-active::after{
+    content:'' !important;
+    display:block !important;
+    position:absolute; bottom:-3px; left:0; right:0;
+    height:2px; background:currentColor; border-radius:1px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Mobile nav — active link highlight
+   --------------------------------------------------------------------- */
+.mobile-nav a.is-active{
+  color:var(--gold-soft) !important;
+}
+
+/* ---------------------------------------------------------------------
+   Stats band — hover lift on each stat
+   --------------------------------------------------------------------- */
+.stat{
+  border-left:1px solid var(--dark-line); padding-left:1.2rem;
+  transition:border-left-color .25s ease;
+}
+.stat:hover{ border-left-color:var(--gold-soft); }
+.stat strong{
+  display:block; font-family:var(--serif); font-weight:500;
+  font-size:clamp(2rem,1.6rem + 1.4vw,2.6rem); color:var(--on-dark);
+  transition:color .25s ease;
+}
+.stat:hover strong{ color:var(--gold-soft); }
+
+/* ---------------------------------------------------------------------
+   Team card — clamp long names to 2 lines, prevent height inconsistency
+   --------------------------------------------------------------------- */
+.team-card .name{
+  font-family:var(--sans); font-weight:600; font-size:.98rem; color:var(--text);
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  min-height:calc(0.98rem * 1.4 * 2);
+}
+.on-dark .team-card .name{ color:var(--on-dark); }
+
+/* ---------------------------------------------------------------------
+   Textarea character counter
+   --------------------------------------------------------------------- */
+.field-meta{
+  display:flex; justify-content:flex-end; margin-top:0.35rem;
+}
+.char-count{
+  font-size:0.75rem; color:var(--text-muted); letter-spacing:0.01em;
+  transition:color .2s ease;
+}
+.char-count.is-near{ color:var(--gold-deep); }
+.char-count.is-over{ color:#9B4A3B; font-weight:600; }
+
+/* ---------------------------------------------------------------------
+   Breadcrumb separator — nicer chevron instead of bare /
+   --------------------------------------------------------------------- */
+.breadcrumb span:not(.current){ font-size:0.7rem; opacity:0.35; }
