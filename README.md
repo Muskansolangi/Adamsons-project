@@ -1,63 +1,139 @@
-# Adamsons Law Associates — Redesigned Website
+# Adamsons Law Associates — Law Firm Website
 
-## What's in this package
+## Project Overview
 
-- `*.html` — 24 pages, ready to open directly in a browser or upload to any static host.
-- `assets/css/style.css` — the full design system (colours, type, components, responsive rules).
-- `assets/js/main.js` — navigation, scroll reveals, stat counters, mobile menu, consultation form.
-- `assets/images/` — all photography, optimised into responsive WebP + JPG sizes.
-- `build/` — the content system used to generate the site (see below). Not required to run
-  the site, but very useful for future edits.
+Adamsons Law Associates is a professional, responsive website developed as a client project for a law firm in Pakistan.
 
-## How to preview it
+The website was designed to establish a strong online presence for the firm and provide visitors with clear information about its legal services, practice areas, advocates, professional affiliations, achievements, and contact details.
 
-Open `index.html` in a browser, or serve the folder locally, e.g.:
+The project focuses on a clean, professional, responsive, and user-friendly interface suitable for a legal services organization.
 
+## Live Website
+
+https://adamsonslaw.com/
+
+## Key Features
+
+* Professional and modern law firm website
+* Fully responsive design for desktop, tablet, and mobile devices
+* Professional homepage with hero section
+* About the firm section
+* Practice areas and legal services
+* Dedicated pages for practice areas
+* Advocate and team member profiles
+* Professional affiliations
+* Events and achievements section
+* Image gallery
+* Contact and consultation section
+* Functional contact form
+* Responsive navigation and mobile menu
+* Optimized images for improved website performance
+* Sitemap and robots.txt configuration
+
+## Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* Bootstrap
+* Font Awesome
+* Responsive Web Design
+* WebP Image Optimization
+* Git
+* GitHub
+
+## Project Structure
+
+```text
+Adamsons-Law-Associates/
+│
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+├── build/
+│
+├── pages/
+│
+├── index.html
+├── robots.txt
+├── sitemap.xml
+└── README.md
 ```
-python3 -m http.server 8000
-```
 
-then visit `http://localhost:8000`.
+### Directory Description
 
-## How to update content later (no admin panel needed)
+**assets/**
+Contains the main website assets, including stylesheets, JavaScript files, images, and other frontend resources.
 
-Every page is generated from a single content file: `build/data.py`. To change a bio, a
-phone number, an office address, a practice-area description, or add a new journal entry,
-edit the relevant entry in `build/data.py`, then run:
+**build/**
+Contains the resources used during the website development and build process.
 
-```
-pip install jinja2
-python3 build/generate.py
-```
+**pages/**
+Contains the additional HTML pages of the website.
 
-This regenerates all 24 HTML pages from the templates in `build/templates/`, so every page
-stays consistent automatically — you never have to hand-edit the navigation or footer on
-24 separate files.
+**index.html**
+The main homepage of the website.
 
-If you'd rather hand-edit the HTML files directly instead, that works too — the generator
-is a convenience, not a requirement.
+**robots.txt**
+Contains instructions for search engine crawlers regarding website crawling.
 
-## What still needs the client's input
+**sitemap.xml**
+Contains the website's sitemap to help search engines discover the available pages.
 
-- **Events & Achievements photo gallery** — no event photography was supplied, so this page
-  currently shows an honest "coming soon" placeholder instead of fabricated images. Once
-  photos are approved, they can be dropped into `assets/images/events/` and the gallery grid
-  (`.gallery-coming` block in `events.html`) can be swapped for real thumbnails.
-- **Advocate Nighat Khan** — no photo or detailed bio was available in the source material,
-  so her profile currently shows a placeholder initial and a short holding note.
-- **~120-word biographies** for team members — several advocates currently have short,
-  factual bios pulled from the existing site. Longer bios can be dropped into `build/data.py`
-  (the `TEAM` list) whenever the client supplies them.
-- **Client/affiliation logos** — Selected Clients and Professional Affiliations are shown as
-  text only, since no logo files were supplied or approved for use.
+**README.md**
+Provides information about the project, technologies, structure, and development.
 
-## Design notes
+## Development
 
-- Palette and type follow the brief exactly: black/charcoal/ivory/gold (~70/20/10 mix),
-  Fraunces (serif headings) + Inter (body/nav).
-- The homepage hero uses a split layout (text beside the photo, not behind it) specifically
-  because the source hero photography is portrait-oriented — this keeps the images sharp
-  and fully visible at every breakpoint instead of stretching/blurring them into a wide banner.
-- Verified responsive at 320/375/390/430/768/1024/1280/1440px with zero horizontal overflow.
-- All content is sourced from the existing site and supplied materials — nothing about the
-  firm, its people, or its history has been invented.
+The website was developed with a focus on:
+
+* Clean and organized frontend structure
+* Responsive and accessible layouts
+* Professional visual design
+* Consistent typography and styling
+* User-friendly navigation
+* Client-specific content implementation
+* Cross-device compatibility
+* Image optimization
+* Maintainable project structure
+
+## Client Project
+
+This project was developed according to the requirements and content provided by the client.
+
+The development process included implementing the website design, organizing the firm's information and legal services, creating responsive layouts, adding team and practice area sections, integrating the contact functionality, optimizing website assets, and preparing the website for deployment.
+
+## Deployment
+
+The website has been successfully deployed and is accessible through the client's official domain:
+
+https://adamsonslaw.com/
+
+## Developer
+
+**Muskan Solangi**
+
+Frontend Web Developer
+
+### Skills Applied
+
+* HTML
+* CSS
+* JavaScript
+* Bootstrap
+* Responsive Web Design
+* Git & GitHub
+* Website Deployment
+* Client Project Development
+
+## Project Status
+
+**Completed and Deployed**
+
+This project represents practical experience in developing and deploying a real-world client website while working with client requirements and delivering a professional responsive frontend.
+
+---
+
+© Adamsons Law Associates
